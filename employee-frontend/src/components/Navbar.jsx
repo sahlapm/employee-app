@@ -19,7 +19,7 @@ const Navbar = () => {
           "token":token
     
         }
-      axios.post(`http://localhost:8082/logincheck`,
+      axios.post(`/api/logincheck`,
      TokenData
       ).then((response)=>{
     

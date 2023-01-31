@@ -22,21 +22,21 @@ const Home = () => {
          {
           setVisible(true);
          }
-         axios.get('http://localhost:8082/')
+         axios.get('/api/')
       .then((getData)=>{
           setApiData(getData.data);
     })
   },[])
   const getData=()=>
     {
-      axios.get('http://localhost:8082/')
+      axios.get('/api/')
       .then((getData)=>{
         setApiData(getData.data);
       })
     }
     const onDelete=(id)=>
     {
-      axios.delete('http://localhost:8082/delete/'+id)
+      axios.delete('/api/delete/'+id)
       .then((response)=>
       {if(response.data.status==="success")
       {

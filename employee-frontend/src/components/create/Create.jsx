@@ -27,7 +27,7 @@ const Create = () => {
        "token":token
 
     }
-  axios.post(`http://localhost:8082/create`,
+  axios.post(`/api/create`,
  employeeData
   ).then((response)=>{
 

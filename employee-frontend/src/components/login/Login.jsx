@@ -26,7 +26,7 @@ const userAuthentication = ()=>{
         "username":username,
         "password":password
       }
-      axios.post(`http://localhost:8082/signin`,
+      axios.post(`/api/signin`,
       userData
       ).then((getData)=>{
 

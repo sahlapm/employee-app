@@ -27,7 +27,7 @@ const Update = () => {
       "location":location,
       "salary":salary
     }
-    axios.put(`http://localhost:8082/update/${ID}`,
+    axios.put(`/api/update/${ID}`,
  employeeData
   ).then((response)=>{
     if(response.data.status==="success")

@@ -20,8 +20,13 @@ mongoose.connect('mongodb+srv://sahla:sahlaAtlas@cluster0.2wlvq8k.mongodb.net/Em
     useNewUrlParser:true
 });
 
+const path = require('path');
+app.use(express.static(path.join(__dirname,'/build')));
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname
+    ,'/build/index.html')); });
 
-app.post('/create',(req,res)=>{
+app.post('/api/create',(req,res)=>{
 
     jwt.verify(req.body.token,"myKey",(err,decoded)=>{
         if(decoded && decoded.username){
@@ -44,7 +49,7 @@ app.post('/create',(req,res)=>{
         }
        })   
 })
-app.post('/logincheck',(req,res)=>{
+app.post('/api/logincheck',(req,res)=>{
 
     jwt.verify(req.body.token,"myKey",(err,decoded)=>{
         if(decoded && decoded.username){
@@ -68,7 +73,7 @@ catch(err)
 }  
 })
 
-app.put('/update/:id',async(req,res)=>{
+app.put('/api/update/:id',async(req,res)=>{
   try {
     let id=req.params.id;
 const data= await EmployeeModel.findOneAndUpdate({"_id":id},req.body)
@@ -81,7 +86,7 @@ catch (error)
    
 })
 
-app.delete('/delete/:id',async(req,res)=>{           
+app.delete('/api/delete/:id',async(req,res)=>{           
     try
     {
         let id=req.params.id;
@@ -96,7 +101,7 @@ app.delete('/delete/:id',async(req,res)=>{
 })
 
 
-app.post("/signup",async(req,res)=>{
+app.post("/api/signup",async(req,res)=>{
 
     let data = new UserModel({ username: req.body.username, 
         password: bcrpt.hashSync(req.body.password,10),
@@ -107,7 +112,7 @@ app.post("/signup",async(req,res)=>{
 
 })
 
-app.post("/signin",async(req,res)=>{
+app.post("/api/signin",async(req,res)=>{
     var getUsername=req.body.username
     var password=req.body.password
 
