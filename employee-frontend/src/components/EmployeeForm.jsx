@@ -3,6 +3,16 @@ import image from './images/registration.jpg';
 import { Button,  Form } from 'semantic-ui-react'
 
 const EmployeeForm = () => {
+  useEffect(() => {
+   
+   /*    */    axios.get('/api/read')
+    .then((getData)=>{
+      alert(getData);
+  
+      alert("hi");
+       
+  })
+},[])
   return (
     <div> <section class="Background">
       

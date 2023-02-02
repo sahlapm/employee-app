@@ -19,7 +19,11 @@ const Update = () => {
 
 
   const sendDataToAPI = ()=>{
-    var token=sessionStorage.getItem("userToken");
+    if(name===""|| position===""|| location==="" || salary==="")
+    {
+     alert('Values cannot be empty');
+    }
+    else{
     const employeeData=
     {
       "name":name,
@@ -27,7 +31,7 @@ const Update = () => {
       "location":location,
       "salary":salary
     }
-    axios.put(`/api/update/${ID}`,
+    axios.put(`http://localhost:8082/api/employee/update/${ID}`,
  employeeData
   ).then((response)=>{
     if(response.data.status==="success")
@@ -41,6 +45,7 @@ const Update = () => {
     }
     
    })
+  }
   }
  
   useEffect(()=>{

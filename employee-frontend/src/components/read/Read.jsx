@@ -2,38 +2,30 @@ import React, { useEffect, useState } from "react";
 import { Table,Button } from 'semantic-ui-react'
 import axios from 'axios'
 import {Link} from 'react-router-dom';
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
 
-import Footer from "./Footer";
+import Footer from "../Footer";
 
-const Home = () => {
+const Read = () => {
     
   const [apiData, setApiData] = useState([]);
   const [visible, setVisible] = useState(true);
  
   useEffect(() => {
-      var userType=sessionStorage.getItem("userType");
-         if(userType==='user')
-         {
-          setVisible(false);
-         }
-         else
-         {
-          setVisible(true);
-         }
-         axios.get('http://localhost:8082/api/employee/read')
-      .then((getData)=>{
-          setApiData(getData.data);
+     const data=async()=>
+     {
+        var dataset= await  axios.get('api/employee/read')
+        setApiData(dataset.data);
+     };
+            
+       data(); 
          
-    })
   },[])
   const getData=()=>
     {
       axios.get('http://localhost:8082/api/employee/read')
       .then((getData)=>{
-        setApiData(getData.data);
+      /*  setApiData(getData.data);*/
         console.log(getData.data);
       })
     }
@@ -53,23 +45,6 @@ const Home = () => {
       })
     }
     
-    const ConfirmDelete = (id) => {
-
-      confirmAlert({
-        title: 'Confirm to delete',
-        message: 'Are you sure to delete this.',
-        buttons: [
-          {
-            label: 'Yes',
-            onClick: () => onDelete(id)
-          },
-          {
-            label: 'No',
-            //onClick: () => alert('Click No')
-          }
-        ]
-      });
-    }
     const setData=(id,name,position,location,salary)=>{
       localStorage.setItem("ID",id);
       localStorage.setItem("name",name);
@@ -80,7 +55,7 @@ const Home = () => {
     }
   return (
     <div>
-<Navbar/>
+
  <section class="Background">
       
       <div class="container py-5 h-100">
@@ -124,7 +99,7 @@ return(
         {visible &&
         <Table.Cell>
         
-          <Button color="red" onClick={()=>ConfirmDelete(data._id)}>Delete</Button>
+          <Button color="red" onClick={()=>onDelete(data._id)}>Delete</Button>
        
         </Table.Cell>}
         
@@ -159,4 +134,4 @@ return(
   )
 }
 
-export default Home
+export default Read

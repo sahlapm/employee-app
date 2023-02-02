@@ -17,6 +17,11 @@ const Create = () => {
 
 
   const sendDataToAPI = ()=>{
+    if(name===""|| position===""|| location==="" || salary==="")
+    {
+     alert('Values cannot be empty');
+    }
+    else{
     var token=sessionStorage.getItem("userToken");
     const employeeData=
     {
@@ -27,7 +32,7 @@ const Create = () => {
        "token":token
 
     }
-  axios.post(`/api/create`,
+  axios.post(`http://localhost:8082/api/employee/create`,
  employeeData
   ).then((response)=>{
 
@@ -51,6 +56,8 @@ else
  
    })
   }
+  }
+  
  
 
   return (

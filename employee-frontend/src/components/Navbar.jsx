@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import axios from 'axios';
-import { Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
-import { Button, Segment } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 const Navbar = () => {
   const navigate=useNavigate();
     const logout = () => {
@@ -11,7 +10,7 @@ const Navbar = () => {
         localStorage.removeItem('userId');
         navigate('/')
       };
- useEffect(() => {
+useEffect(() => {
       
         var token=sessionStorage.getItem("userToken");
         const TokenData=
@@ -19,7 +18,7 @@ const Navbar = () => {
           "token":token
     
         }
-      axios.post(`/api/logincheck`,
+      axios.post('http://localhost:8082/api/user/logincheck',
      TokenData
       ).then((response)=>{
     
@@ -32,7 +31,8 @@ const Navbar = () => {
      
        })
       })
-      
+   
+
   return (
     <div>
          <nav class="navbar navbar-expand-lg navbar-light bg-secondary">

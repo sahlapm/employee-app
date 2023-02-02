@@ -9,5 +9,6 @@ const UserSchema=mongoose.Schema(
     }
 );
 var UserModel=mongoose.model('users',UserSchema);
+
 module.exports={UserModel}
 

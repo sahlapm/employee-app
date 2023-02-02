@@ -12,10 +12,10 @@ const [password,setPassword]=useState('');
 
 const userAuthentication = ()=>{
 
-  if(username=='')
+  if(username==='')
   {
     alert("Username required")
-  } if(password=='')
+  } if(password==='')
   {
     alert("Password required")
   }
@@ -26,7 +26,7 @@ const userAuthentication = ()=>{
         "username":username,
         "password":password
       }
-      axios.post(`/api/signin`,
+      axios.post(`http://localhost:8082/api/user/signin`,
       userData
       ).then((getData)=>{
 
