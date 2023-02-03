@@ -23,7 +23,7 @@ const Home = () => {
          {
           setVisible(true);
          }
-         axios.get('http://localhost:8082/api/employee/read')
+         axios.get('/api/employee/read')
       .then((getData)=>{
           setApiData(getData.data);
          
@@ -31,7 +31,7 @@ const Home = () => {
   },[])
   const getData=()=>
     {
-      axios.get('http://localhost:8082/api/employee/read')
+      axios.get('/api/employee/read')
       .then((getData)=>{
         setApiData(getData.data);
         console.log(getData.data);
@@ -39,7 +39,7 @@ const Home = () => {
     }
     const onDelete=(id)=>
     {
-      axios.delete('http://localhost:8082/api/employee/delete/'+id)
+      axios.delete('/api/employee/delete/'+id)
       .then((response)=>
       {if(response.data.status==="success")
       {

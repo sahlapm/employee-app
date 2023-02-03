@@ -18,7 +18,7 @@ useEffect(() => {
           "token":token
     
         }
-      axios.post('http://localhost:8082/api/user/logincheck',
+      axios.post('/api/user/logincheck',
      TokenData
       ).then((response)=>{
     
