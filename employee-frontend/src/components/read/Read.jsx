@@ -14,8 +14,8 @@ const Read = () => {
   useEffect(() => {
      const data=async()=>
      {
-        var dataset= await  axios.get('http://localhost:8082/api/employee/create')
-       console.log(dataset);
+        var dataset= await  axios.get('api/employee/read')
+        setApiData(dataset.data);
      };
             
        
@@ -23,7 +23,7 @@ const Read = () => {
   },[])
   const getData=()=>
     {
-      axios.get('http://localhost:8082/api/employee/read')
+      axios.get('/api/employee/read')
       .then((getData)=>{
       /*  setApiData(getData.data);*/
         console.log(getData.data);
@@ -31,7 +31,7 @@ const Read = () => {
     }
     const onDelete=(id)=>
     {
-      axios.delete('http://localhost:8082/api/employee/delete/'+id)
+      axios.delete('/api/employee/delete/'+id)
       .then((response)=>
       {if(response.data.status==="success")
       {

@@ -20,7 +20,7 @@ mongoose.connect('mongodb+srv://sahla:sahlaAtlas@cluster0.2wlvq8k.mongodb.net/Em
 const path = require('path');
 app.use(express.static(path.join(__dirname,'/build')));
 app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname,'/build/index.html')); });*/
+    res.sendFile(path.join(__dirname,'/build/index.html')); });
 
     app.use('/api/employee',employee);
     app.use('/api/user',user);
