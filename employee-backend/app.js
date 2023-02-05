@@ -16,9 +16,9 @@ mongoose.connect('mongodb+srv://sahla:sahlaAtlas@cluster0.2wlvq8k.mongodb.net/Em
 {
     useNewUrlParser:true
 });
-/**/
+/*
 const path = require('path');
-/*app.use(express.static(path.join(__dirname,'/build')));
+app.use(express.static(path.join(__dirname,'/build')));
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname,'/build/index.html')); });*/
 

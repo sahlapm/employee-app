@@ -15,7 +15,6 @@ const Create = () => {
   const [location,setLocation]=useState('');
   const [salary,setSalary]=useState('');
 
-
   const sendDataToAPI = ()=>{
     if(name===""|| position===""|| location==="" || salary==="")
     {
